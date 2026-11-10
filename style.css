@@ -1,0 +1,59 @@
+
+/* =================================
+   NUTRITION TRACKER
+   Main Stylesheet
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #f5f7fb;
+    --surface: #ffffff;
+    --primary: #2878e5;
+    --text: #172033;
+    --muted: #8490a3;
+    --border: #e8edf4;
+    --success: #16a477;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+#app {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.8px;
+}
+
+p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 480px) {
+    body {
+        padding: 16px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+}
