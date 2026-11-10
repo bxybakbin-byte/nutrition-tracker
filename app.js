@@ -78,6 +78,10 @@ let selectedWorkout = "leg";
 
 function saveDatabase() {
     localStorage.setItem(DB_KEY, JSON.stringify(database));
+
+    if (typeof window.syncToSupabase === "function") {
+        window.syncToSupabase(database);
+    }
 }
 
 function getDay(date = selectedDate) {
