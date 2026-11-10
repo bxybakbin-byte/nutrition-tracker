@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#101827">
+    <meta name="theme-color" content="#f5f7fb">
 
     <title>Nutrition Tracker</title>
 
@@ -12,10 +13,88 @@
 <body>
 
     <div id="app">
-        <h1>Nutrition Tracker</h1>
-        <p>Personal Food & Macro Tracking</p>
+
+        <header class="app-header">
+            <div>
+                <h1>Nutrition Tracker</h1>
+                <p>Personal Health & Fitness</p>
+            </div>
+            <div id="today-date"></div>
+        </header>
+
+        <main id="main-content">
+
+            <section id="dashboard-page" class="page active">
+                <div id="dashboard"></div>
+            </section>
+
+            <section id="nutrition-page" class="page">
+                <div id="nutrition"></div>
+            </section>
+
+            <section id="foods-page" class="page">
+                <div id="foods"></div>
+            </section>
+
+            <section id="workout-page" class="page">
+                <div id="workout"></div>
+            </section>
+
+            <section id="cardio-page" class="page">
+                <div id="cardio"></div>
+            </section>
+
+            <section id="progress-page" class="page">
+                <div id="progress"></div>
+            </section>
+
+            <section id="weight-page" class="page">
+                <div id="weight"></div>
+            </section>
+
+            <section id="water-page" class="page">
+                <div id="water"></div>
+            </section>
+
+            <section id="settings-page" class="page">
+                <div id="settings"></div>
+            </section>
+
+        </main>
+
+        <nav class="bottom-nav">
+
+            <button data-page="dashboard" class="nav-btn active">
+                <span>⌂</span>
+                <small>หน้าหลัก</small>
+            </button>
+
+            <button data-page="nutrition" class="nav-btn">
+                <span>♧</span>
+                <small>อาหาร</small>
+            </button>
+
+            <button data-page="workout" class="nav-btn">
+                <span>⚒</span>
+                <small>Workout</small>
+            </button>
+
+            <button data-page="progress" class="nav-btn">
+                <span>▥</span>
+                <small>Progress</small>
+            </button>
+
+            <button data-page="settings" class="nav-btn">
+                <span>⚙</span>
+                <small>ตั้งค่า</small>
+            </button>
+
+        </nav>
+
     </div>
 
+    <script src="foods.js"></script>
     <script src="app.js"></script>
+
 </body>
 </html>
