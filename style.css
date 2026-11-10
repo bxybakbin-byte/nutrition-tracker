@@ -1,200 +1,271 @@
 
-/* =========================================
-   NUTRITION TRACKER - MODERN DASHBOARD
-========================================= */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap');
+/* =====================================
+   NUTRITION TRACKER 2.0
+   MODERN CLEAN DESIGN
+===================================== */
 
 :root {
+    --primary: #3478f6;
+    --primary-dark: #205fd0;
+    --primary-light: #eaf1ff;
+
     --background: #f5f7fb;
     --surface: #ffffff;
-    --primary: #3678ed;
-    --primary-light: #eaf1ff;
-    --text: #172033;
-    --muted: #8792a5;
-    --border: #e9edf3;
-    --green: #16a477;
-    --red: #e45d67;
-    --yellow: #e5a63b;
+    --text: #182235;
+    --muted: #8490a3;
+    --border: #e8edf4;
+
+    --green: #19a879;
+    --orange: #f19a38;
+    --red: #e45d69;
+
     --radius: 18px;
+    --shadow: 0 4px 18px rgba(30, 55, 90, 0.045);
 }
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+    font-family: Arial, "Noto Sans Thai", sans-serif;
     background: var(--background);
     color: var(--text);
-    min-height: 100vh;
-    padding: 30px 20px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
 }
 
 #app {
-    max-width: 760px;
-    width: 100%;
+    max-width: 1100px;
+    min-height: 100vh;
     margin: auto;
+    padding: 0 25px 110px;
 }
 
 /* HEADER */
 
-.header {
+.app-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 30px 0;
     gap: 15px;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
 }
 
-.header h1 {
-    font-size: 27px;
+.app-header h1 {
+    font-size: 25px;
     font-weight: 800;
-    letter-spacing: -0.8px;
+    letter-spacing: -0.7px;
 }
 
-.header p {
-    color: var(--muted);
+.app-header p {
     font-size: 13px;
-    margin-top: 5px;
+    color: var(--muted);
 }
 
-.date input {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 11px;
-    border-radius: 11px;
-    font-family: inherit;
-    color: var(--text);
+#today-date {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary);
+    background: var(--primary-light);
+    padding: 9px 14px;
+    border-radius: 12px;
 }
 
-/* SECTION */
+/* PAGE */
 
-section {
-    margin-bottom: 22px;
+.page {
+    display: none;
+    animation: fadeIn 0.2s ease;
 }
 
-section h2 {
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    font-size: 23px;
+    margin-bottom: 20px;
+    font-weight: 750;
+}
+
+h3 {
     font-size: 17px;
     font-weight: 700;
-    margin-bottom: 15px;
+    margin-bottom: 13px;
 }
 
-/* CALORIE SUMMARY */
+/* CARDS */
 
-.summary-card {
-    background: linear-gradient(135deg, #3678ed, #5b9bfa);
-    color: white;
-    padding: 25px;
-    border-radius: 22px;
-    box-shadow: 0 8px 24px rgba(54, 120, 237, 0.16);
+.meal-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 21px;
+    margin-bottom: 17px;
+    box-shadow: var(--shadow);
 }
 
-.summary-card > p:first-child {
-    color: #e5edff;
-    font-size: 13px;
-}
-
-.summary-card h2 {
-    font-size: 38px;
-    margin: 10px 0 18px;
-    letter-spacing: -1px;
-}
-
-.summary-card h2 small {
+.meal-card p {
     font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0;
+    margin: 9px 0;
+    color: #526075;
 }
 
-.summary-card > p:last-child {
-    font-size: 13px;
-    margin-top: 12px;
-    color: white;
+.meal-card h2 {
+    font-size: 28px;
+    color: var(--primary);
+    margin: 10px 0;
 }
+
+/* PROGRESS BAR */
 
 .progress-track {
-    width: 100%;
     height: 9px;
-    background: #e9edf3;
+    width: 100%;
+    background: #edf0f5;
     border-radius: 20px;
     overflow: hidden;
-    margin: 12px 0;
-}
-
-.summary-card .progress-track {
-    background: rgba(255,255,255,0.25);
+    margin: 9px 0 13px;
 }
 
 .progress-fill {
     height: 100%;
-    background: var(--primary);
+    background: linear-gradient(
+        90deg,
+        #3478f6,
+        #69a0ff
+    );
     border-radius: 20px;
     transition: width 0.3s ease;
 }
 
-.summary-card .progress-fill {
-    background: white;
+/* BUTTONS */
+
+button {
+    transition: 0.2s ease;
 }
 
-/* MACROS */
+.meal-card button,
+#nutrition button,
+#workout button,
+#cardio button,
+#foods button,
+#weight button,
+#water button,
+#settings button,
+#progress button {
+    background: var(--primary);
+    color: white;
+    padding: 11px 16px;
+    border-radius: 11px;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 5px 5px 5px 0;
+}
 
-.macro-card {
+button:hover {
+    filter: brightness(0.95);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.food-item button {
+    background: #fff0f1 !important;
+    color: var(--red) !important;
+}
+
+/* FORMS */
+
+form {
     background: var(--surface);
-    padding: 18px;
-    border: 1px solid var(--border);
+    padding: 22px;
     border-radius: var(--radius);
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 650;
+    color: #536176;
+    margin: 14px 0 6px;
+}
+
+input,
+select {
+    display: block;
+    width: 100%;
+    min-height: 46px;
+    padding: 11px 13px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    background: #fbfcfe;
+    color: var(--text);
+    outline: none;
+    font-size: 14px;
     margin-bottom: 12px;
 }
 
-.macro-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
+input:focus,
+select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(52, 120, 246, 0.1);
+    background: white;
 }
 
-.macro-heading span {
-    font-size: 12px;
-    color: var(--muted);
-    text-align: right;
+input::placeholder {
+    color: #aab3c0;
 }
 
-.macro-card small {
-    color: var(--muted);
-    font-size: 11px;
+form button[type="submit"] {
+    width: 100%;
+    min-height: 47px;
+    margin-top: 15px !important;
+    font-size: 14px !important;
 }
 
-.macro-card .progress-fill {
-    background: var(--green);
-}
-
-/* MEALS */
-
-.meal-card {
-    background: var(--surface);
-    padding: 20px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    margin-bottom: 14px;
-}
-
-.meal-card h3 {
-    font-size: 15px;
-    margin-bottom: 14px;
-}
+/* FOOD ITEMS */
 
 .food-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 12px;
-    padding: 13px 0;
-    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+}
+
+.food-item:last-child {
+    border-bottom: none;
 }
 
 .food-item strong {
@@ -204,122 +275,177 @@ section h2 {
 .food-item p {
     font-size: 12px;
     color: var(--muted);
-    margin: 5px 0;
+    margin: 3px 0;
 }
 
 .food-item small {
     color: var(--muted);
     font-size: 11px;
-    line-height: 1.8;
 }
 
-.add-btn {
-    width: 100%;
-    border: 1px dashed #a9c5f5;
-    background: var(--primary-light);
-    color: var(--primary);
-    padding: 13px;
+/* WORKOUT */
+
+#workout .meal-card {
+    border-left: 4px solid var(--primary);
+}
+
+#workout .meal-card h3 {
+    color: var(--primary-dark);
+}
+
+/* NAVIGATION */
+
+.bottom-nav {
+    position: fixed;
+    z-index: 100;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(15px);
+    border-top: 1px solid var(--border);
+
+    padding: 10px 15px;
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+}
+
+.nav-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+
+    flex: 1;
+    max-width: 115px;
+
+    color: var(--muted);
+    background: transparent;
     border-radius: 12px;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 10px;
-    font-family: inherit;
+    padding: 7px 3px;
 }
 
-.add-btn:hover {
-    background: #dce8ff;
+.nav-btn span {
+    font-size: 22px;
+    line-height: 1.2;
 }
 
-.delete-btn {
-    border: none;
-    background: #fff0f0;
-    color: var(--red);
-    padding: 8px 12px;
-    border-radius: 9px;
-    cursor: pointer;
-    font-family: inherit;
+.nav-btn small {
+    font-size: 10px;
     font-weight: 600;
 }
 
-/* DAILY SUMMARY */
-
-.daily-summary {
-    background: var(--surface);
-    padding: 22px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
+.nav-btn.active {
+    color: var(--primary);
+    background: var(--primary-light);
 }
 
-.daily-summary p {
-    display: flex;
-    justify-content: space-between;
-    padding: 11px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
+/* PROGRESS HISTORY */
+
+#progress .meal-card {
+    border-left: 3px solid var(--primary);
 }
 
-.daily-summary p:last-child {
-    border-bottom: none;
+#weight .food-item strong {
+    color: var(--primary);
 }
 
-/* BUTTON INTERACTION */
+/* EMPTY STATES */
 
-button {
-    transition: 0.2s ease;
+.meal-card:empty {
+    display: none;
 }
 
-button:active {
-    transform: scale(0.98);
-}
+/* DESKTOP */
 
-input:focus {
-    outline: 2px solid #b5ceff;
-    outline-offset: 2px;
+@media (min-width: 768px) {
+    #app {
+        padding: 0 45px 120px;
+    }
+
+    .app-header {
+        padding: 38px 0;
+    }
+
+    .app-header h1 {
+        font-size: 30px;
+    }
+
+    .bottom-nav {
+        max-width: 700px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 15px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    }
+
+    #dashboard {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    #dashboard > h2 {
+        grid-column: 1 / -1;
+    }
+
+    #dashboard .meal-card {
+        margin-bottom: 0;
+    }
 }
 
 /* MOBILE */
 
 @media (max-width: 600px) {
-
-    body {
-        padding: 18px 13px;
+    #app {
+        padding: 0 15px 105px;
     }
 
-    .header {
+    .app-header {
+        padding: 23px 0;
+    }
+
+    .app-header h1 {
+        font-size: 21px;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+
+    .meal-card,
+    form {
+        padding: 17px;
+        border-radius: 15px;
+    }
+
+    .bottom-nav {
+        gap: 2px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .nav-btn small {
+        font-size: 9px;
+    }
+
+    .nav-btn span {
+        font-size: 20px;
+    }
+
+    #dashboard .meal-card h2 {
+        font-size: 24px;
+    }
+
+    .food-item {
         align-items: flex-start;
-    }
-
-    .header h1 {
-        font-size: 23px;
-    }
-
-    .date input {
-        width: 145px;
-        font-size: 11px;
-    }
-
-    .summary-card {
-        padding: 21px;
-    }
-
-    .summary-card h2 {
-        font-size: 32px;
-    }
-
-    .macro-card {
-        padding: 15px;
-    }
-
-    .macro-heading {
-        font-size: 13px;
-    }
-
-    .macro-heading span {
-        font-size: 11px;
-    }
-
-    .meal-card {
-        padding: 16px;
     }
 }
