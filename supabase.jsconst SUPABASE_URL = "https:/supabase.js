@@ -1,10 +1,11 @@
+
 // =========================================
 // MY FITNESS - SUPABASE CONFIGURATION
 // =========================================
 
 const SUPABASE_URL = "https://rjirogpjhclfueipnuym.supabase.co";
 
-const SUPABASE_ANON_KEY = "sb_publishable_4fkPSfvL6h-v85vSuc62Xg_M9s4oj2H";
+const SUPABASE_ANON_KEY = "sb_publishable_4fkPSfvL6h-v85vSuc62Xg_M9s4oj2";
 
 const supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
@@ -45,7 +46,6 @@ function showApp() {
     }
 }
 
-// ซ่อนแอปก่อนตรวจสอบสถานะล็อกอิน
 showLogin();
 
 // =========================================
@@ -177,9 +177,7 @@ async function initializeUser(user) {
         if (cloudRecord && cloudRecord.data) {
 
             if (isLocalDatabaseEmpty(localData)) {
-
                 window.replaceFitnessDatabase(cloudRecord.data);
-
             } else {
 
                 const useCloud = confirm(
@@ -196,9 +194,7 @@ async function initializeUser(user) {
             }
 
         } else {
-
             await uploadToCloud(user, localData);
-
         }
 
         initialSyncComplete = true;
