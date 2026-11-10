@@ -105,6 +105,22 @@ window.replaceFitnessDatabase = function (newDatabase) {
     renderPage();
 };
 
+function getDay(date = selectedDate) {
+    if (!database.days[date]) {
+        database.days[date] = emptyDay();
+    }
+
+    const day = database.days[date];
+
+    day.meals ||= { 1: [], 2: [], 3: [] };
+    day.workouts ||= [];
+    day.cardio ||= [];
+    day.water ??= 0;
+    day.weight ??= null;
+
+    return day;
+}
+
 function safe(value) {
     return String(value ?? "").replace(/[&<>"']/g, c => ({
         "&": "&amp;",
