@@ -78,27 +78,32 @@ let selectedWorkout = "leg";
 
 function saveDatabase() {
     localStorage.setItem(DB_KEY, JSON.stringify(database));
-
-    if (typeof window.syncToSupabase === "function") {
-        window.syncToSupabase(database);
-    }
 }
+// =========================================
+// SUPABASE DATABASE BRIDGE
+// =========================================
 
-function getDay(date = selectedDate) {
-    if (!database.days[date]) {
-        database.days[date] = emptyDay();
+window.getFitnessDatabase = function () {
+    return database;
+};
+
+window.replaceFitnessDatabase = function (newDatabase) {
+    if (
+        !newDatabase ||
+        typeof newDatabase !== "object" ||
+        !newDatabase.days ||
+        !Array.isArray(newDatabase.foods) ||
+        !newDatabase.targets
+    ) {
+        throw new Error("Invalid database format");
     }
 
-    const day = database.days[date];
+    database = newDatabase;
 
-    day.meals ||= { 1: [], 2: [], 3: [] };
-    day.workouts ||= [];
-    day.cardio ||= [];
-    day.water ??= 0;
-    day.weight ??= null;
+    localStorage.setItem(DB_KEY, JSON.stringify(database));
 
-    return day;
-}
+    renderPage();
+};
 
 function safe(value) {
     return String(value ?? "").replace(/[&<>"']/g, c => ({
