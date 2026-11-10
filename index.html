@@ -6,95 +6,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#f5f7fb">
 
-    <title>Nutrition Tracker</title>
+    <title>Personal Nutrition Tracker</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <div id="app">
+<div id="app">
 
-        <header class="app-header">
-            <div>
-                <h1>Nutrition Tracker</h1>
-                <p>Personal Health & Fitness</p>
-            </div>
-            <div id="today-date"></div>
-        </header>
+    <!-- HEADER -->
+    <header class="app-header">
+        <div>
+            <h1>Nutrition Tracker</h1>
+            <p>Personal Health & Fitness Dashboard</p>
+        </div>
 
-        <main id="main-content">
+        <div id="today-date"></div>
+    </header>
 
-            <section id="dashboard-page" class="page active">
-                <div id="dashboard"></div>
-            </section>
+    <!-- DASHBOARD -->
+    <section id="dashboard-page" class="page active">
+        <div id="dashboard"></div>
+    </section>
 
-            <section id="nutrition-page" class="page">
-                <div id="nutrition"></div>
-            </section>
+    <!-- NUTRITION -->
+    <section id="nutrition-page" class="page">
+        <div id="nutrition"></div>
+    </section>
 
-            <section id="foods-page" class="page">
-                <div id="foods"></div>
-            </section>
+    <!-- FOOD DATABASE -->
+    <section id="foods-page" class="page">
+        <div id="foods"></div>
+    </section>
 
-            <section id="workout-page" class="page">
-                <div id="workout"></div>
-            </section>
+    <!-- WORKOUT -->
+    <section id="workout-page" class="page">
+        <div id="workout"></div>
+    </section>
 
-            <section id="cardio-page" class="page">
-                <div id="cardio"></div>
-            </section>
+    <!-- CARDIO -->
+    <section id="cardio-page" class="page">
+        <div id="cardio"></div>
+    </section>
 
-            <section id="progress-page" class="page">
-                <div id="progress"></div>
-            </section>
+    <!-- PROGRESS -->
+    <section id="progress-page" class="page">
+        <div id="progress"></div>
+    </section>
 
-            <section id="weight-page" class="page">
-                <div id="weight"></div>
-            </section>
+    <!-- WEIGHT -->
+    <section id="weight-page" class="page">
+        <div id="weight"></div>
+    </section>
 
-            <section id="water-page" class="page">
-                <div id="water"></div>
-            </section>
+    <!-- WATER -->
+    <section id="water-page" class="page">
+        <div id="water"></div>
+    </section>
 
-            <section id="settings-page" class="page">
-                <div id="settings"></div>
-            </section>
+    <!-- SETTINGS -->
+    <section id="settings-page" class="page">
+        <div id="settings"></div>
+    </section>
 
-        </main>
+</div>
 
-        <nav class="bottom-nav">
+<!-- BOTTOM NAVIGATION -->
+<nav class="bottom-nav">
 
-            <button data-page="dashboard" class="nav-btn active">
-                <span>⌂</span>
-                <small>หน้าหลัก</small>
-            </button>
+    <button class="nav-btn active" data-page="dashboard">
+        <span>⌂</span>
+        <small>หน้าหลัก</small>
+    </button>
 
-            <button data-page="nutrition" class="nav-btn">
-                <span>♧</span>
-                <small>อาหาร</small>
-            </button>
+    <button class="nav-btn" data-page="nutrition">
+        <span>🍽️</span>
+        <small>อาหาร</small>
+    </button>
 
-            <button data-page="workout" class="nav-btn">
-                <span>⚒</span>
-                <small>Workout</small>
-            </button>
+    <button class="nav-btn" data-page="workout">
+        <span>🏋️</span>
+        <small>Workout</small>
+    </button>
 
-            <button data-page="progress" class="nav-btn">
-                <span>▥</span>
-                <small>Progress</small>
-            </button>
+    <button class="nav-btn" data-page="cardio">
+        <span>🏃</span>
+        <small>Cardio</small>
+    </button>
 
-            <button data-page="settings" class="nav-btn">
-                <span>⚙</span>
-                <small>ตั้งค่า</small>
-            </button>
+    <button class="nav-btn" data-page="progress">
+        <span>📊</span>
+        <small>สถิติ</small>
+    </button>
 
-        </nav>
+    <button class="nav-btn" data-page="settings">
+        <span>⚙️</span>
+        <small>ตั้งค่า</small>
+    </button>
 
-    </div>
+</nav>
 
-    <script src="foods.js"></script>
-    <script src="app.js"></script>
+<!-- DATABASE AND APPLICATION -->
+<script src="foods.js"></script>
+<script src="app.js"></script>
 
 </body>
 </html>
